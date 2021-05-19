@@ -14,4 +14,4 @@ with other functionalities such as:
 PDF generation
 Email Sending
 
-To be added on this repo is also an alterante micr0service whose sole purpose is to query this microsevice.
+On branch "master" there is a client CheckIn microservice uploaded that does simple get and put request to the main ReservationSystem microservice

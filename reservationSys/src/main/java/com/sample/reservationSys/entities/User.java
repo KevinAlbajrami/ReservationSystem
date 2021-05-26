@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 
@@ -16,6 +17,7 @@ public class User extends AbstractEntity{
 	private String fName;
 	@Column(name="last_name")
 	private String LName;
+	@NotBlank(message="Email is mandatory")
 	private String email;
 	@Size(min=3)
 	private String password;

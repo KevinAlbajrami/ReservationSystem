@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -27,7 +26,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/","/showReg","/login","/registerUser","/login/*","/index.html","/showLogin").permitAll()
-		.antMatchers("/admin","/showFlights","/addFlight").hasAnyAuthority("ADMIN").anyRequest().authenticated().and().csrf().disable();
+		http.authorizeRequests().antMatchers("/","/oauth2/*","/login","/searchFlight","/showReg","/registerUser","/login/*","/index.html","/showLogin").permitAll()
+		.antMatchers("/admin","/showFlights","/addFlight").hasAnyAuthority("ADMIN").anyRequest().authenticated().and().csrf().disable().logout().logoutSuccessUrl("/showLogin");
 	}
+	
+	
 }

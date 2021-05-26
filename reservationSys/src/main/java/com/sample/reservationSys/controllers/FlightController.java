@@ -39,12 +39,6 @@ public class FlightController {
 		return "displayFlights";
 	}
 	
-	@RequestMapping("/admin")
-	public String showAddFlight(ModelMap modelMap) {
-		List<Flight> flights = fRepo.findAll();
-		modelMap.addAttribute("flights", flights);
-		return "showFlights";
-	}
 	@RequestMapping(value="/addFlight")
 	public String addFlight() {
 		return "addFlight";
@@ -57,7 +51,9 @@ public class FlightController {
 		Timestamp ts = Timestamp.valueOf(time);
 		Flight flight = new Flight(code, destination, date, ts);
 		fRepo.save(flight);	
-		return showAddFlight(modelMap);
+		List<Flight> flights = fRepo.findAll();
+		modelMap.addAttribute("flights", flights);
+		return "showFlights";
 	}
 	
 	@RequestMapping("/showUpdate")
@@ -78,7 +74,9 @@ public class FlightController {
 		flight.setDepTime(ts);
 		flight.setDestination(destination);
 		fRepo.save(flight);
-		return showAddFlight(modelMap);
+		List<Flight> flights = fRepo.findAll();
+		modelMap.addAttribute("flights", flights);
+		return "showFlights";
 	}
 	
 	@RequestMapping("deleteFlight")
@@ -88,7 +86,9 @@ public class FlightController {
 		Flight nf = new Flight();
 		nf.setId(id);
 		fRepo.delete(nf);
-		return showAddFlight(modelMap);
+		List<Flight> flights = fRepo.findAll();
+		modelMap.addAttribute("flights", flights);
+		return "showFlights";
 		
 	}
 	

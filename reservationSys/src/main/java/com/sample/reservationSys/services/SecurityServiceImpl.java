@@ -16,6 +16,8 @@ public class SecurityServiceImpl implements SecurityService {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
+	public int res;
+	
 	@Override
 	public boolean login(String username, String password) {
 		UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -25,7 +27,7 @@ public class SecurityServiceImpl implements SecurityService {
 		authenticationManager.authenticate(token);
 		
 		boolean result = token.isAuthenticated();
-		
+		res=token.getAuthorities().size();
 		if(result) {
 			SecurityContextHolder.getContext().setAuthentication(token);
 		}

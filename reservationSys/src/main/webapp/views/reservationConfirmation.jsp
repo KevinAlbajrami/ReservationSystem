@@ -35,6 +35,7 @@ th, td {
 </style>
 </head>
 <body>
+<a href="<c:url value="/logout" />">Logout</a>
 <h2>${msg}</h2>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +32,10 @@ p    {color: red;}
 </style>
 </head>
 <body>
-<h2>Find Flights</h2>
+<div>
+<h2>Find Flights </h2>
+<a href="<c:url value="/logout" />">Logout</a>
+</div>
 <form style="display: flex;
 justify-content: center;
 vertical-align: middle;" action="findFlights" method="post">
@@ -44,6 +48,6 @@ vertical-align: middle;" action="findFlights" method="post">
     color:black;
     " type="submit" value="search">
 </form>
-
+	
 </body>
 </html>

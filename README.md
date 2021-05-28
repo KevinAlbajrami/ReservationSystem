@@ -16,7 +16,7 @@ Roles
 
 Security
 
-Fileters
+Filters
 
 with other functionalities such as:
 

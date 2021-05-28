@@ -29,4 +29,19 @@ public class EmailUtil {
 		}
 		sender.send(message);
 	}
+	
+	public void sendEmail(String toAddress,String subject, String text) {
+		MimeMessage message = sender.createMimeMessage();
+		
+		try {
+			MimeMessageHelper helper = new MimeMessageHelper(message,true);
+			helper.setTo(toAddress);
+			helper.setSubject(subject);
+			helper.setText(text);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		sender.send(message);
+	}
 }

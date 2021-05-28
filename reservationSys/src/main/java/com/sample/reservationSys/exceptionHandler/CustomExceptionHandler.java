@@ -26,11 +26,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 	       return new ResponseEntity<>(apiError, apiError.getStatus());
 	   }
 	   
-	   @ExceptionHandler(AccessDeniedException.class)
-	   protected ResponseEntity<Object> handleAccessDenied(
-			   AccessDeniedException ex) {
-		   ExceptionResponse apiError = new ExceptionResponse(HttpStatus.FORBIDDEN);
-	       apiError.setMessage(ex.getMessage());
-	       return buildResponseEntity(apiError);
-	   }
+		
+		@ExceptionHandler(AccessDeniedException.class)
+		protected ResponseEntity<Object> handleAccessDenied(AccessDeniedException ex) {
+			ExceptionResponse apiError = new ExceptionResponse(HttpStatus.FORBIDDEN);
+			apiError.setMessage(ex.getMessage());
+			return buildResponseEntity(apiError);
+		}
+		
 }

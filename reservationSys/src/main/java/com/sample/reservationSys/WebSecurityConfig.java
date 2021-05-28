@@ -26,8 +26,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/","/oauth2/*","/login","/searchFlight","/showReg","/registerUser","/login/*","/index.html","/showLogin").permitAll()
-		.antMatchers("/admin","/showFlights","/addFlight").hasAnyAuthority("ADMIN").anyRequest().authenticated().and().csrf().disable().logout().logoutSuccessUrl("/showLogin");
+		http
+		.httpBasic()
+        .and()
+		.authorizeRequests()
+		.antMatchers("/**").permitAll()
+		.and()
+		.authorizeRequests()
+		.antMatchers("/admin","/showFlights","/addFlight","/contact").hasAnyAuthority("ADMIN").anyRequest().authenticated()
+		.and().csrf().disable().logout().logoutSuccessUrl("/showLogin");
 	}
 	
 	

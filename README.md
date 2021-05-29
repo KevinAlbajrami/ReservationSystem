@@ -2,7 +2,7 @@
 Java Restful Spring App Microservice
 This flight reservation application allows users to create accounts, login, reserve flights as USERS while as (ADMIN_ROLE) a user can also create flights, delete and edit them.
 Upon reserving a flight the user is delivered a generated pdf (with flight details) to their email address. Any visitor can also send an email to the company via a basic contact us form. 
-This project (still under development) implements all the basics of SPRING mostly focused on SPRING BOOT
+This project (still under development) implements all the basics of SPRING BOOT
 including:
 
 REST Services

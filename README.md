@@ -25,4 +25,4 @@ PDF generation
 
 Email Sending
 
-On branch "master" there is a client CheckIn microservice uploaded that does simple get and put request to the main ReservationSystem microservice
+to be added there is a client CheckIn microservice that does simple get and put request to the main ReservationSystem microservice

@@ -1,19 +1,19 @@
 package com.sample.reservationSys;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.HeaderWriterLogoutHandler;
+import org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Bean
 	public BCryptPasswordEncoder bCryptEncoder() {
 		return new BCryptPasswordEncoder();
@@ -28,14 +28,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 		http
 		.httpBasic()
-        .and()
+		.authenticationEntryPoint(new NoPopupBasicAuthenticationEntryPoint())
+		.and()
 		.authorizeRequests()
 		.antMatchers("/**").permitAll()
 		.and()
 		.authorizeRequests()
-		.antMatchers("/admin","/showFlights","/addFlight","/contact").hasAnyAuthority("ADMIN").anyRequest().authenticated()
-		.and().csrf().disable().logout().logoutSuccessUrl("/showLogin");
-	}
+		.antMatchers("/admin","/showFlights","/addFlight").hasAnyAuthority("ADMIN").anyRequest().authenticated()
+		.and().logout().logoutSuccessUrl("/showLogin")
+		.addLogoutHandler(new HeaderWriterLogoutHandler(
+	            new ClearSiteDataHeaderWriter(
+	              ClearSiteDataHeaderWriter.Directive.CACHE,
+	              ClearSiteDataHeaderWriter.Directive.COOKIES,
+	              ClearSiteDataHeaderWriter.Directive.STORAGE)))
+		.and().csrf().disable()
+		
+		;}
 	
 	
 }

@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -32,9 +34,11 @@ public class FlightController {
 	private ReservationRepo rRepo;
 	
 	@RequestMapping("findFlights")
-	public String findFlights(@RequestParam("destination") String destination,@RequestParam("depDate")
+	public String findFlights(final HttpSession session,@RequestParam("destination") String destination,@RequestParam("depDate")
 	@DateTimeFormat(pattern="MM-dd-yyyy") Date date, ModelMap modelMap) {
 		List<Flight> flights = fRepo.findFlights(destination,date);
+		
+		
 		modelMap.addAttribute("flights",flights);
 		return "displayFlights";
 	}

@@ -33,6 +33,7 @@ p    {color: red;}
 </head>
 <body>
 <div>
+<h1> Welcome, ${loginName}</h1>
 <h2>Find Flights </h2>
 <a href="<c:url value="/logout" />">Logout</a>
 </div>

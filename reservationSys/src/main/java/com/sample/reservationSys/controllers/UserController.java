@@ -3,6 +3,7 @@ package com.sample.reservationSys.controllers;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,14 +69,18 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(HttpServletRequest request,@RequestParam("email") String email, @RequestParam("password")String password, ModelMap modelMap) {
+	public String login(HttpSession session,HttpServletRequest request,@RequestParam("email") String email, @RequestParam("password")String password, ModelMap modelMap) {
 		boolean loginResponse = securityService.login(email, password);
 		if(loginResponse) {
+			request.getSession().setAttribute("username", email);
 			if(securityService.res==2) {
 				return showAddFlight(modelMap);
 			}else {
+				String name = (String) session.getAttribute("username");
+				modelMap.addAttribute("loginName", name);
 			return "findFlights";
 			}
+			
 		}else {
 			modelMap.addAttribute("msg", "Invalid UserName or Password");
 		}

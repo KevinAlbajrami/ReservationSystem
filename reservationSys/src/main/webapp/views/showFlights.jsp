@@ -65,5 +65,6 @@ border-color: orange;
     color:black;
     transform: translateX(-50%) translateY(-50%);
     " href="addFlight">Add Flight</a>
+    <a href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>

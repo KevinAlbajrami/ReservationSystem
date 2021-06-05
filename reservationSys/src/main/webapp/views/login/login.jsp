@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Login</title>
+<title >Login</title>
 <style>
 body {background-color: white;}
 h1   {color: #DCDCDC;
@@ -31,7 +30,7 @@ p    {color: red;}
 </style>
 </head>
 <body>
-<h1>FLIGHT RESERVATION SYSTEM</h1>
+<h1><spring:message code="welcome" text="default"/>FLIGHT RESERVATION SYSTEM</h1>
 <h2>Login:</h2>
 <form style="display: flex;
 justify-content: center;

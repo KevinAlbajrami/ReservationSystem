@@ -19,6 +19,8 @@ Security
 
 Filters
 
+Internationalization
+
 with other functionalities such as:
 
 PDF generation

@@ -5,17 +5,17 @@ Upon reserving a flight the user is delivered a generated pdf (with flight detai
 This project (still under development) implements all the basics of SPRING BOOT
 including:
 
-REST Services
+REST Services: Basic Add, Update, Delete, Get One, Get All methods implementations.
 
-Database Management (JPA/Hibernate)
+Database Management (JPA/Hibernate) : Implementation of JPA Repository, including Dpring Data JPA findByEmail etc.
 
-Validation
+Validation: Both html Validation and JPA Validation
 
-Exceptions
+Exceptions: The usual NotFound, AccessDenied Exceptions
 
-Roles
+Roles: A user can be an Admin or a simple User with authorizations to access different resources.
 
-Security
+Basic Spring Security implementation.
 
 Filters
 

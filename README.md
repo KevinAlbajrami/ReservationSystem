@@ -17,6 +17,8 @@ Roles: A user can be an Admin or a simple User with authorizations to access dif
 
 Basic Spring Security implementation.
 
+Basic AOP implementation
+
 Filters
 
 Internationalization

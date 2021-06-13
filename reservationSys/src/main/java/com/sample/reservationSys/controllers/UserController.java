@@ -42,7 +42,7 @@ public class UserController {
 		return "login/registerUser";
 	}
 	
-	@RequestMapping( value="/registerUser", method= {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping( value="/registerUser", method= RequestMethod.POST)
 	public String register(@Valid @ModelAttribute("user") User user, @RequestParam("passwordC") String passConf, ModelMap modelMap) {
 		if(passConf.equals(user.getPassword())) {
 			user.setPassword(encoder.encode(user.getPassword()));

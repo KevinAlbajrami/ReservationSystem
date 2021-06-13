@@ -96,11 +96,16 @@
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-jdbc</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 	</dependencies>
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-thymeleaf</artifactId>
-	</dependency>
+
 	<build>
 		<plugins>
 			<plugin>
